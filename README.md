@@ -1,4 +1,6 @@
-1) 解除 Linux 系统的最大进程数和最大文件打开数限制：
+# 解除 Linux 系统的最大进程数和最大文件打开数限制：
+
+```
         vi /etc/security/limits.conf
         # 添加如下的行
         * soft noproc 65535
@@ -11,7 +13,8 @@
 	重启生效
 	ulimit -n 可以查看
 	(最大值: ulimit -n  1048576)
-    
+```
+   
 #TCP相关参数解释
 
 	tcp_syn_retries ：INTEGER
