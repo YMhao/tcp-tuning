@@ -1,3 +1,17 @@
+1) 解除 Linux 系统的最大进程数和最大文件打开数限制：
+        vi /etc/security/limits.conf
+        # 添加如下的行
+        * soft noproc 65535
+        * hard noproc 65525
+        * soft nofile 1000000
+        * hard nofile 1000000 
+       说明：* 代表针对所有用户
+            noproc 是代表最大进程数
+            nofile 是代表最大文件打开数 
+	重启生效
+	ulimit -n 可以查看
+	(最大值: ulimit -n  1048576)
+    
 #TCP相关参数解释
 
 	tcp_syn_retries ：INTEGER
@@ -185,9 +199,7 @@
 	表示系统同时保持TIME_WAIT套接字的最大数量，如果超过这个数字，TIME_WAIT套接字将立刻被清除并打印警告信息。默认为 180000，改为 5000。对于Apache、Nginx等服务器，上几行的参数可以很好地减少TIME_WAIT套接字数量，但是对于Squid，效果却不大。此项参数可以控制TIME_WAIT套接字的最大数量，避免Squid服务器被大量的TIME_WAIT套接字拖死。
 
 #针对高并发数，我们需要提高一些linux的默认限制:
-	fs.file-max = 51200
-	(最大值: ulimit -n  1048576)
-	
+
 	#提高整个系统的文件限制
 	net.ipv4.tcp_syncookies = 1
 	#表示开启SYN Cookies。当出现SYN等待队列溢出时，启用cookies来处理，可防范少量SYN攻击，默认为0，表示关闭；
