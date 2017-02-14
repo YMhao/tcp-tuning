@@ -186,6 +186,8 @@
 
 #针对高并发数，我们需要提高一些linux的默认限制:
 	fs.file-max = 51200
+	(最大值: ulimit -n  1048576)
+	
 	#提高整个系统的文件限制
 	net.ipv4.tcp_syncookies = 1
 	#表示开启SYN Cookies。当出现SYN等待队列溢出时，启用cookies来处理，可防范少量SYN攻击，默认为0，表示关闭；
